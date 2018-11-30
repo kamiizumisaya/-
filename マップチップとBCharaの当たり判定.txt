@@ -1,0 +1,38 @@
+nanespace Map
+{
+	class Chip : public BChara
+	{
+		void Draw();
+		bool HitBase(BChara* c)
+		{
+			//“–‚½‚è”»’è
+		}
+	}
+	class Object : public BTask
+	{
+		std::vector<std::vector<Chip>> hitBase;
+		void Render2D_AF()
+		{
+			for(int y = 0;y < hitBase.size();++y)
+			{
+				for(int x = 0;x < hitBase[y].size();++x)
+				{
+					//‰æ–ÊŠOˆ—
+					hitBase[y][x].Draw();
+				}
+			}
+		}
+		bool HitCheck(Bchara* c)
+		{
+			//c‚ÆhitBase’B‚Å“–‚½‚è”»’è‚ð‚·‚é
+			for(int y = 0;y < hitBase.size();++y)
+			{
+				for(int x = 0;x < hitBase[y].size();++x)
+				{
+					//Ž©•ª‚©‚ç‰“‚¢‚à‚Ì‚ð‚Í‚¶‚­
+					hitBase[y][x].HitCheck(c);
+				}
+			}
+		}
+	}
+}
